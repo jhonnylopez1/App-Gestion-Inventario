@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro de Clientes</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css/index.css">
+</head>
+<body>
+  
+  <nav class="navbar navbar-expand-md" style="background-color: #e3f2fd;" data-bs-theme="light">
+    <div class="container-fluid">
+    
+      <div class="navbar-collapse justify-content-center" id="navbar-toggler">
+        
+        <ul class="navbar-nav ">
+          <li class="nav-item">
+            <a class="nav-link enlace" href="index.html">Inicio</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link enlace" href="articulo.html">Articulos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="proveedores.html">Proveedores</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="inventario.html">Ingresar Facturas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cajero.html">Cajeros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cliente.html">Clientes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="ventas.html">Ventas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="stock.html">Stock</a>
+          </li>
+        </ul>
+        
+      </div>
+    </div>
+  </nav>
+  
+  <section class="hero align-items-stretch">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-12 ">
+            <h1>Registrar Cliente</h1>
+            <form id="clienteForm" class="card p-4 shadow bg_formulario">
+
+              <div class="row">
+                <div class="col-md-2 mb-3">
+                  <label class="form-label">Id Cliente:</label>
+                  <input class="form-control" type="number" name="id_cliente" required>
+                </div>
+
+                <div class="col-md-2 mb-3">
+                  <label class="form-label">Nombre Cliente:</label>
+                  <input class="form-control" type="text" name="nombre_cliente" required>
+                </div>
+
+                <div class="col-md-2 mb-3">
+                  <label class="form-label">Telefono Cliente:</label>
+                  <input class="form-control" type="number" name="telefono_cliente" required>
+                </div>
+
+                <div class="col-md-2 mb-3">
+                  <label class="form-label">Correo Cliente:</label>
+                  <input class="form-control" type="email" name="correo_cliente" required>
+                </div>
+
+                <div class="col-md-2 mb-3">
+                  <label class="form-label">Direccion Cliente:</label>
+                  <input class="form-control" type="text" name="direccion_cliente" required>
+                </div>
+                
+              <button type="submit" class="btn boton_submit col-md-3 mx-auto">Guardar Cliente</button>
+            </form>
+          </div>
+          <p id="respuesta"></p>
+        </div>
+      </div>
+    </section>
+
+  
+  
+
+  <script>
+    const form = document.getElementById('clienteForm');
+    const respuesta = document.getElementById('respuesta');
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const datos = new FormData(form);
+      const objeto = {};
+
+      datos.forEach((valor, clave) => {
+        objeto[clave] = valor;
+      });
+
+      fetch('http://localhost:3000/cliente', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(objeto)
+      })
+        .then(response => response.json())
+        .then(data => {
+          respuesta.textContent = data.mensaje;
+          form.reset();
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          respuesta.textContent = 'Error al registrar cliente';
+        });
+    });
+  </script>
+  <footer class="text-center py-5">
+        © 2025 Jhonny Andres Lopez | Todos los derechos reservados.
+    </footer>
+</body>
+</html>

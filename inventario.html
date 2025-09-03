@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Inventario</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css/index.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-md" style="background-color: #e3f2fd;" data-bs-theme="light">
+    <div class="container-fluid">
+    
+      <div class="navbar-collapse justify-content-center" id="navbar-toggler">
+        
+        <ul class="navbar-nav ">
+          <li class="nav-item">
+            <a class="nav-link enlace" href="index.html">Inicio</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link enlace" href="articulo.html">Articulos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="proveedores.html">Proveedores</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="inventario.html">Ingresar Facturas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cajero.html">Cajeros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cliente.html">Clientes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="ventas.html">Ventas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="stock.html">Stock</a>
+          </li>
+        </ul>
+        
+      </div>
+    </div>
+  </nav>
+
+<!--Seccion Hero-->
+ <section class="hero align-items-stretch">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+          <div class="col-md-12 ">
+            
+            <form id="inventarioForm" class="card p-4 shadow bg_formulario">
+              <div class="row">
+
+                <div class="col-md-2 mb-3">
+                  <label class="form-label">Proveedor:</label>
+                  <select class="form-control" name="id_proveedor" id="proveedorSelect" required></select>
+                </div>
+
+                <div class="col-md-2 mb-3">
+                  <label class="form-label">Articulo:</label>
+                  <select class="form-control" name="id_articulo" id="articuloSelect" required></select>
+                </div>
+
+                <div class="col-md-2 mb-3">
+                  <label class="form-label">Fecha:</label>
+                  <input class="form-control" type="date" name="fecha" required>
+                </div>
+
+                <div class="col-md-2 mb-3">
+                  <label class="form-label">Cantidad Suministrada:</label>
+                  <input class="form-control" type="number" name="cantidad_suministrada" required>
+                </div>
+
+                <div class="col-md-2 mb-3">
+                  <label class="form-label">Estado:</label>
+                  <input class="form-control" type="text" name="estado" required>
+                </div>
+              
+              </div>
+              <button type="submit" class="btn boton_submit col-md-3 mx-auto">Registrar Inventario</button>
+            </form>
+            <div>
+            <p id="respuesta"></p>  
+            </div>
+            <h2>Inventario Registrado</h2>
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered" id="tablaInventario">
+                <thead>
+                    <tr>
+                        <th>Proveedor</th>
+                        <th>Articulo</th>
+                        <th>Fecha</th>
+                        <th>Cantidad</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                
+                </tbody>
+                </table>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+</section>
+    
+    
+    
+    <script src="script_Inventario.js"></script>
+    <footer class="text-center py-5">
+        © 2025 Jhonny Andres Lopez | Todos los derechos reservados.
+    </footer>
+</body>
+</html>

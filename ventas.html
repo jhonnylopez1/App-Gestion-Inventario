@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Ventas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css/index.css">
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-md" style="background-color: #e3f2fd;" data-bs-theme="light">
+    <div class="container-fluid">
+    
+      <div class="navbar-collapse justify-content-center" id="navbar-toggler">
+        
+        <ul class="navbar-nav ">
+          
+          <li class="nav-item">
+            <a class="nav-link enlace" href="articulo.html">Articulos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="proveedores.html">Proveedores</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="inventario.html">Ingresar Facturas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cajero.html">Cajeros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cliente.html">Clientes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="ventas.html">Ventas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="stock.html">Stock</a>
+          </li>
+        </ul>
+        
+      </div>
+    </div>
+  </nav>
+
+<!--Seccion Hero-->
+ <section class="hero align-items-stretch">
+    <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-12 ">
+            <h1>Registrar Ventas</h1>
+            <form id="facturaForm" class="card p-4 shadow bg_formulario">
+              <div class="row">
+
+                <div class="col-md-2 mb-3">
+                  <label class="form-label">Cliente:</label>
+                  <select class="form-control" name="id_cliente" id="clienteSelect" required></select>
+                </div>
+
+                <div class="col-md-2 mb-3">
+                  <label class="form-label">Cajero:</label>
+                  <select class="form-control" name="id_cajero" id="cajeroSelect" required></select>
+                </div>
+
+                <div class="col-md-2 mb-3">
+                  <label class="form-label">Fecha:</label>
+                  <input class="form-control" type="date" name="fecha_factura" required>
+                </div>
+
+                <div class="col-md-2 mb-3">
+                  <label class="form-label">Estado:</label>
+                  <input class="form-control" type="text" name="estado" value="Pagada" required>
+                </div>
+
+                <div class="col-md-2 mb-3">
+                  <label class="form-label">Articulo:</label>
+                  <select class="form-control" name="articuloSelect" id="articuloSelect" required>
+                    <option value="">Seleccione un articulo</option>
+                  </select>
+                </div>
+
+                <div class="col-md-2 mb-3">
+                  <label class="form-label">Cantidad:</label>
+                  <input class="form-control" type="number" id="cantidadArticulo" name="estado" value="1" min="1" required>
+                </div>
+
+              
+              </div>
+              <button type="submit" class="btn boton_submit col-md-3 mx-auto" id="agregarArticulo">Agregar</button>
+
+              <div>
+                <ul class="list-group" id="listaArticulos"></ul>
+              </div>
+
+              <div class="row">
+                <div class="col-md-4 mb-3">
+                  <label class="form-label">Impuestos (IVA 19%):</label>
+                  <input class="form-control" type="text" name="impuestos" id="impuestos" readonly>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                  <label class="form-label">Total:</label>
+                  <input class="form-control" type="text" name="total" id="total" readonly>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                  <label class="form-label">Metodo de Pago:</label>
+                  <input class="form-control" type="text" name="metodo_pago" id="metodo_pago" required>
+                </div>
+                <button type="submit" class="btn boton_submit col-md-3 mx-auto" >Registrar Venta</button>
+              </div>
+              
+            </form>
+            <div>
+            <p id="respuesta"></p>
+            
+          </div>
+        </div>
+      </div>
+</section>
+
+    
+     <script src="script_ventas.js"></script>
+     <footer class="text-center py-5">
+        © 2025 Jhonny Andres Lopez | Todos los derechos reservados.
+    </footer>
+</body>
+</html>
