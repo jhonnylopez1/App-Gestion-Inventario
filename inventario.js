@@ -5,6 +5,7 @@ const db = require('./db')
 //Ruta para registrar inventario
 router.post('/inventario',(req, res) => {
     const {
+        id_proveedor_articulo,
         id_proveedor,
         id_articulo,
         fecha,
@@ -12,17 +13,25 @@ router.post('/inventario',(req, res) => {
         estado
     }= req.body;
 
+    if (!Number.isInteger(cantidad_suministrada) || cantidad_suministrada <= 0) {
+        return res.status(400).json({
+            mensaje: "La cantidad suministrada debe ser un número positivo"
+        });
+    }
+
     const sql = `
         INSERT INTO proveedor_articulo (
+            id_proveedor_articulo,
             id_proveedor,
             id_articulo,
             fecha,
             cantidad_suministrada,
             estado
-        )VALUES (?,?,?,?,?)
+        )VALUES (?,?,?,?,?,?)
     `;
 
     db.query(sql, [
+        id_proveedor_articulo,
         id_proveedor,
         id_articulo,
         fecha,

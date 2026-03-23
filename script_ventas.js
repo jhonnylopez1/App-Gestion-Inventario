@@ -91,6 +91,10 @@ form.addEventListener('submit',e=>{
     datos.forEach((valor,clave)=>{
         objeto[clave]=valor;
     });
+
+    if(!objeto.id_cliente){
+        objeto.id_cliente = null;
+    }
     
     objeto.impuestos=parseFloat(impuestosInput.value);
     objeto.total=parseFloat(totalInput.value);

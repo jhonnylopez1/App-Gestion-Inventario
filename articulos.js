@@ -12,7 +12,6 @@ router.post('/articulos',(req,res)=>{
         nombre_articulo,
         precio_articulo,
         marca_articulo,
-        categoria_articulo,
         descripcion_articulo
     }=req.body;
 
@@ -23,9 +22,8 @@ router.post('/articulos',(req,res)=>{
         nombre_articulo,
         precio_articulo,
         marca_articulo,
-        categoria_articulo,
         descripcion_articulo
-    ) VALUES (?,?,?,?,?,?)
+    ) VALUES (?,?,?,?,?)
     `;
 
     //Ejecutamos la consulta
@@ -34,7 +32,6 @@ router.post('/articulos',(req,res)=>{
     nombre_articulo,
     precio_articulo,
     marca_articulo,
-    categoria_articulo,
     descripcion_articulo
     ],(err,result) =>{
     if (err) {

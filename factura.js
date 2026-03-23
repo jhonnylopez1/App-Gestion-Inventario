@@ -29,7 +29,7 @@ router.post('/factura',(req, res)=>{
 
     db.query(sql,[
         id_cajero,
-        id_cliente,
+        id_cliente || null,
         fecha_factura,
         estado,
         impuestos,

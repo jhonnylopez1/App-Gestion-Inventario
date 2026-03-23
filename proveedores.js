@@ -5,23 +5,23 @@ const db = require('./db') // se llama a la conexion con la base de datos
 
 //Insertar nuevo proveedor
 router.post('/proveedores' , (req,res)=>{
-    const { id_proveedor, nombre_proveedor, tel_proveedor,correo_proveedor, direccion_proveedor } = req.body;
+    const { nombre_proveedor, tel_proveedor,correo_proveedor, direccion_proveedor } = req.body;
     
     const sql = `
       INSERT INTO proveedor (
-      id_proveedor,
       nombre_proveedor,
       tel_proveedor,
       correo_proveedor,
       direccion_proveedor
-      )VALUES(?,?,?,?,?)
+      )VALUES(?,?,?,?)
     `;
 
-    db.query(sql,[id_proveedor, nombre_proveedor, tel_proveedor,correo_proveedor, direccion_proveedor],(err, result)=>{
+    db.query(sql,[nombre_proveedor, tel_proveedor,correo_proveedor, direccion_proveedor],(err, result)=>{
         if(err) {
             console.error('Error al insetar proveedor:', err);
             res.status(500).json({mensaje: 'Error al insertar proveedor'});
         }else{
+            const nuevoId = result.insertId
             res.status(201).json({ mensaje: 'Proveedor insertado correctamente'});
 
         }

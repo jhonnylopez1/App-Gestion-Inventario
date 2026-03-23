@@ -3,6 +3,7 @@ const proveedorSelect = document.getElementById('proveedorSelect');
 const articuloSelect = document.getElementById('articuloSelect');
 const form = document.getElementById('inventarioForm');
 const respuesta = document.getElementById('respuesta');
+const numeroFacturaSelect = document.getElementById("numeroFacturaSelect")
 
 //Funcion para llenar los valores en el Select de proveedores
 fetch('http://localhost:3000/proveedores')
@@ -70,6 +71,7 @@ function cargarInventario(){
             data.forEach(item=>{
                 const fila = document.createElement('tr');
                 fila.innerHTML= `
+                    <td>${item.id_proveedor_articulo}</td>
                     <td>${item.nombre_proveedor}</td>
                     <td>${item.nombre_articulo}</td>
                     <td>${item.fecha}</td>
@@ -81,6 +83,20 @@ function cargarInventario(){
         });
 }
 cargarInventario();
+
+document.getElementById("buscadorInventario").addEventListener("keyup", function () {
+    let filtro = this.value.toLowerCase();
+    let filas = document.querySelectorAll("#cuerpoInventario tr");
+
+    filas.forEach(fila => {
+        let texto = fila.textContent.toLowerCase();
+        if (texto.includes(filtro)) {
+            fila.style.display = "";
+        } else {
+            fila.style.display = "none";
+        }
+    });
+});
 
 
 

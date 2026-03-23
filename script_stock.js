@@ -19,3 +19,17 @@ fetch('http://localhost:3000/stock')
         console.error('Error al obtener el stock',error);
         alert('Error al cargar los datos del stock');
     })
+
+document.getElementById("buscadorInventario").addEventListener("keyup", function () {
+    let filtro = this.value.toLowerCase();
+    let filas = document.querySelectorAll("#cuerpoStock tr");
+
+    filas.forEach(fila => {
+        let texto = fila.textContent.toLowerCase();
+        if (texto.includes(filtro)) {
+            fila.style.display = "";
+        } else {
+            fila.style.display = "none";
+        }
+    });
+});
